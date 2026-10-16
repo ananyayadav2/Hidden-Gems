@@ -3,26 +3,33 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { login } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [role, setRole] = useState<'tourist' | 'owner'>('tourist');
 
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
-    // Saves user locally without OTP or Aadhaar
-    const user = { name: name.trim(), email: email.trim(), role };
-    localStorage.setItem('hg_currentUser', JSON.stringify(user));
-    
-    // Redirect based on selected role
-    router.push(role === 'tourist' ? '/explore' : '/owner');
+    if (!name.trim() || !email.trim()) return;
+
+    // Save to global auth state
+    login(name.trim(), email.trim(), role);
+
+    // If owner -> redirect to Place Owner dashboard, else -> explore page with favorites unlocked
+    if (role === 'owner') {
+      router.push('/owner');
+    } else {
+      router.push('/explore');
+    }
   };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
-      <div className="max-w-md w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-2xl shadow-sm">
+      <div className="max-w-md w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-3xl shadow-sm">
         <div className="text-center mb-6">
           <span className="text-3xl">💎</span>
           <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mt-2">
@@ -44,7 +51,7 @@ export default function RegisterPage() {
               placeholder="e.g. Ananya"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg text-sm bg-transparent outline-none focus:border-teal-600 text-zinc-900 dark:text-zinc-100"
+              className="w-full px-3.5 py-2 border rounded-xl text-sm bg-transparent outline-none focus:border-teal-600 text-zinc-900 dark:text-zinc-100"
             />
           </div>
 
@@ -58,7 +65,7 @@ export default function RegisterPage() {
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border rounded-lg text-sm bg-transparent outline-none focus:border-teal-600 text-zinc-900 dark:text-zinc-100"
+              className="w-full px-3.5 py-2 border rounded-xl text-sm bg-transparent outline-none focus:border-teal-600 text-zinc-900 dark:text-zinc-100"
             />
           </div>
 
@@ -69,19 +76,19 @@ export default function RegisterPage() {
             <div className="grid grid-cols-2 gap-3">
               <div
                 onClick={() => setRole('tourist')}
-                className={`p-3 border rounded-xl cursor-pointer text-left transition ${
+                className={`p-3.5 border rounded-2xl cursor-pointer text-left transition ${
                   role === 'tourist'
                     ? 'border-teal-600 bg-teal-50 dark:bg-teal-950/40 text-teal-950 dark:text-teal-200 ring-2 ring-teal-600/30'
                     : 'border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800'
                 }`}
               >
                 <div className="font-bold text-xs sm:text-sm">🎒 Tourist / Student</div>
-                <div className="text-[11px] text-zinc-500 mt-0.5">Explore spots & study spaces</div>
+                <div className="text-[11px] text-zinc-500 mt-0.5">Save favourites & plan outings</div>
               </div>
 
               <div
                 onClick={() => setRole('owner')}
-                className={`p-3 border rounded-xl cursor-pointer text-left transition ${
+                className={`p-3.5 border rounded-2xl cursor-pointer text-left transition ${
                   role === 'owner'
                     ? 'border-teal-600 bg-teal-50 dark:bg-teal-950/40 text-teal-950 dark:text-teal-200 ring-2 ring-teal-600/30'
                     : 'border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800'
@@ -95,7 +102,7 @@ export default function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full py-2.5 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-lg text-sm transition shadow-sm mt-4"
+            className="w-full py-3 bg-teal-700 hover:bg-teal-800 text-white font-bold rounded-xl text-sm transition shadow-sm mt-4"
           >
             Sign Up & Continue →
           </button>
