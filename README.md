@@ -1,7 +1,7 @@
 # 💎 HIDDEN GEMS — Local City Discovery Platform
 
 > **Explore Beyond the Ordinary**  
-> Discover affordable food, quiet study corners, viewpoints, and cultural treasures that mainstream guidebooks skip.
+> Discover affordable food, quiet study corners, scenic viewpoints, waterfalls, and cultural treasures that mainstream guidebooks skip[cite: 1].
 
 🌐 **Live Deployment**: [https://hidden-gems-one.vercel.app/](https://hidden-gems-one.vercel.app/)  
 📂 **GitHub Repository**: [https://github.com/ananyayadav2/Hidden-Gems](https://github.com/ananyayadav2/Hidden-Gems)
@@ -10,42 +10,63 @@
 
 ## 📌 Project Overview
 
-**HIDDEN GEMS** is a localized urban exploration and discovery web platform engineered for students, budget explorers, and cultural travelers. Mainstream travel platforms frequently suffer from commercial bias—promoting expensive chains and crowded tourist traps. **HIDDEN GEMS** bridges this divide by surfacing unmonetized public viewpoints, quiet library reading halls, affordable eateries, and heritage sites with zero or minimal entry fees, while empowering local small business and place owners to list and manage their locations.
+**HIDDEN GEMS** is an urban exploration, itinerary planning, and local discovery platform built for students, budget explorers, and cultural travelers[cite: 1]. Mainstream travel platforms often suffer from commercial bias—favoring sponsored chains and crowded tourist attractions. **HIDDEN GEMS** solves this by cataloging verified quiet study corners, public viewpoints, affordable eateries, nature trails, and heritage sites with zero or minimal entry fees, while giving local place owners a direct avenue to showcase their locations.
 
 ---
 
 ## 🚀 Key Features
 
 ### 🎒 1. Tourist / Explorer Workflow
-* **Multi-Attribute Discovery**: Filter spots by dynamic/unrestricted budgets (including ₹0 free places), atmosphere (*Quiet & Peaceful*, *Moderate*, *Lively & Social*), and study-friendly workspace tags.
-* **Over 100+ Curated Spots**: Covers Mumbai, Thane, Navi Mumbai, and surrounding getaways within 200 km (waterfalls, ancient rock-cut caves, hill forts, indie book cafes, and street food corridors).
-* **Smart Exploration & Turn-by-Turn Navigation**:
-  * Direct Google Search integration on place titles to quickly view live articles, photos, and reviews in a new tab.
-  * One-click Google Maps turn-by-turn routing links to any destination.
-* **Favorites & Community Upvotes**: Save locations locally in-browser and discover spots ranked by community appreciation.
+* **Smart Day-Out Planner & Budget Guardian**:
+  * Input your starting budget, available hours, and target vibe (Quiet, Lively, Any).
+  * Generates an optimized 2–3 stop itinerary arranged in practical sequence with recommended visit durations.
+  * **Budget Guardian**: Itemizes estimated costs into Travel, Food/Beverages, and Entry Tickets, showing the exact remaining balance and transparent editorial estimates.
+* **Proximity & Geolocation Sorting**:
+  * One-click "Sort by Distance (Near Me)" computes live radial distance (in kilometers) to all spots using browser geolocation and the Haversine formula.
+* **Multi-Attribute Discovery**:
+  * Filter spots by dynamic/unrestricted budgets (including ₹0 free places), atmosphere (*Quiet & Peaceful*, *Moderate*, *Lively & Social*), and study-friendly tags.
+* **Over 100+ Curated Regional Spots**:
+  * Covers Mumbai, Thane, Navi Mumbai, and weekend destinations within 200 km (Lonavala, Khandala, Karjat, Matheran, Alibaug, Igatpuri, Pune, and Nashik).
+* **Smart Navigation & Quick Research**:
+  * Click any place title to launch a direct Google Search in a new tab for instant image galleries and visitor articles.
+  * One-click Google Maps turn-by-turn route planning.
+* **Persistent Favorites & Community Upvotes**:
+  * Save places into a personal collection stored securely in your profile across sessions and logouts.
 
-### 🏪 2. Place Owner Workflow
-* **Owner Dashboard**: Independent cafes, quiet gardens, and cultural venues can easily register their locations.
-* **Admin Review Queue**: Submissions include category, cost per person, atmosphere, description, and photo uploads, feeding into a community verification queue before going live.
+---
 
-### 🌐 3. Multilingual Support (Bhashini Standard)
-* Instant, client-side language switching across **English**, **Hindi (हिंदी)**, and **Marathi (मराठी)** to ensure vernacular inclusion and accessibility for regional travelers.
+### 💬 2. Community Feedback & Photo Uploads
+* **Visitor Reviews & Ratings**: Rate places from 1 to 5 stars, leave practical visitor tips, and read advice from previous travelers.
+* **Photo Attachments**: Upload photos directly with your feedback to share real-world conditions and perspectives.
 
-### 🔒 4. Frictionless Onboarding
-* Lightweight sign-up requiring only **Full Name** and **Email ID**.
-* Eliminates verification bottlenecks and identity verification friction for immediate platform access.
+---
+
+### 🏪 3. Place Owner Workflow
+* **Owner Dashboard**: Independent cafes, quiet reading rooms, nature parks, and cultural spaces can list their spots.
+* **Review Queue**: Collects name, location, category, costs, ambiance, and photo submissions for community verification before going live.
+
+---
+
+### 🌐 4. Multilingual Engine (Bhashini Standard)
+* Instant, client-side language switching across **English**, **Hindi (हिंदी)**, and **Marathi (मराठी)** to ensure vernacular accessibility across Maharashtra[cite: 3].
+
+---
+
+### 🔒 5. Zero-Friction Authentication
+* Direct sign-up requiring only **Full Name** and **Email ID**[cite: 15].
+* Direct email-based login that instantly restores your saved favorites, profile identity, and role without passwords, OTP delays, or KYC roadblocks[cite: 15, 18].
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Framework**: [Next.js](https://nextjs.org/) (App Router, React)
-* **Language**: [TypeScript](https://www.typescriptlang.org/)
-* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-* **Icons**: [Lucide React](https://lucide.dev/)
-* **Animations**: [Framer Motion](https://www.framer.com/motion/)
-* **Deployment**: [Vercel](https://vercel.com/)
-* **External Links**: Google Maps Deep Routing & Google Search Query Parameters
+* **Framework**: [Next.js](https://nextjs.org/) (App Router, React 19)[cite: 5, 12]
+* **Language**: [TypeScript](https://www.typescriptlang.org/)[cite: 13]
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)[cite: 3]
+* **Icons**: [Lucide React](https://lucide.dev/)[cite: 3]
+* **Animations**: [Framer Motion](https://www.framer.com/motion/)[cite: 3]
+* **Hosting**: [Vercel](https://vercel.com/)[cite: 12]
+* **External Integrations**: Google Maps Platform URL Scheme & Google Search Query API
 
 ---
 
@@ -54,24 +75,29 @@
 ```text
 hidden-gems/
 ├── app/
-│   ├── layout.tsx             # Root layout with LanguageProvider and Navbar
-│   ├── page.tsx               # Landing page with hero, search, live stats & 8 categories
+│   ├── layout.tsx             # Root layout with AuthProvider, LanguageProvider & Navbar
+│   ├── page.tsx               # Homepage with hero, search, statistics & categories
 │   ├── explore/
-│   │   └── page.tsx           # Tourist explorer interface with dynamic multi-filters
+│   │   └── page.tsx           # Multi-filter explorer, distance sort & modal triggers
 │   ├── owner/
-│   │   └── page.tsx           # Place Owner dashboard & submission review form
+│   │   └── page.tsx           # Place Owner dashboard & review submission form
+│   ├── profile/
+│   │   └── page.tsx           # User profile & saved favourites collection
 │   └── auth/
-│       ├── login/page.tsx     # Sign-in portal with credential checks
-│       └── register/page.tsx  # Direct Name & Email registration
+│       ├── login/page.tsx     # Direct email sign-in (no password required)
+│       └── register/page.tsx  # Name & email registration (no OTP / KYC)
 ├── components/
-│   ├── Navbar.tsx             # Multilingual switcher and navigation header
-│   └── SplashScreen.tsx       # Animated Diamond Gem entry screen
+│   ├── DayOutPlanner.tsx      # Smart Day-Out Planner & Budget Guardian component
+│   ├── ReviewModal.tsx        # Community reviews, tips & photo upload modal
+│   ├── Navbar.tsx             # Multilingual switcher, role badge & favourites counter
+│   └── SplashScreen.tsx       # Animated Diamond Gem splash screen
 ├── context/
+│   ├── AuthContext.tsx        # Persistent user accounts, session state & favorites
 │   └── LanguageContext.tsx    # Multilingual translation provider (EN, HI, MR)
 ├── data/
-│   └── initialGems.ts         # Curated catalog of 100+ regional locations (up to 200 km)
+│   └── initialGems.ts         # Curated catalog of 100+ spots (Mumbai & up to 200 km)
 └── types/
-    └── index.ts               # Core data models and interfaces
+    └── index.ts               # Place, Review, CostBreakdown & User interfaces
 
 💻 Getting Started Locally
 Prerequisites
